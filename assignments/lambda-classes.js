@@ -38,24 +38,11 @@ class Person {
         console.log(`Hello my name is ${this.name}, I am from ${this.location}.`)
     }
 
-
 } // end person class
 
 
 
 
-class GameObject {
-    //constructor
-constructor(options) {
-    this.createdAt = options.createdAt;
-    this.dimensions = options.dimensions;
-    this.name = options.name;
-}
-    //methods
-destroy() {
-    return `GameObject was removed from the game.`;
-}
-} //end GameObject class
 
 
 #### Instructor
@@ -69,6 +56,24 @@ destroy() {
 * Instructor has the following methods:
   * `demo` receives a `subject` string as an argument and logs out the phrase 'Today we are learning about {subject}' where subject is the param passed in.
   * `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
+  
+
+  class Instructor extends Person {
+      constructor(atts) {
+          super(atts);
+          this.specialty = atts.specialty;
+          this.favLanguage = atts.favLanguage;
+          this.catchPhrase = atts.catchPhrase;
+      }
+
+      demo(subject) {
+          console.log(`Today we are learning about {subject}.`);
+      }
+
+      grade(student, subject) {
+          console.log('{student.name} receives a perfect score on {subject}.');
+      }
+  } // end Instructor class
 
 #### Student
 
@@ -82,6 +87,28 @@ destroy() {
   * `listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
+  
+
+  class Students extends Person{
+        constructor(atts) {
+            super(atts);
+            this.previousBackground = atts.previousBackground;
+            this.className = atts.className;
+            this.favSubjects = atts.favSubjects;
+        }
+        
+        listSubjects() {                                    // should be one by one
+            console.log(`${this.name} enjoys these subjects: ${this.favSubjects}`);
+        }
+
+        PRAssignment(subject) {
+            console.log(`${this.name} has submitted a PR for {subject}.`);
+        }
+
+        sprintChallenge(subject) {
+            console.log(`${this.name} has begun sprint challenge on {subject}.`);
+        }
+  } // end Student class
 
 #### Project Mananger
 
@@ -93,6 +120,27 @@ destroy() {
 * ProjectManangers have the following Methods:
   * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
   * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
+  
+
+    class PM extends Instructor {
+        constructor(atts) {
+            super(atts);
+            this.gradClassName = atts.gradClassName;
+            this.favInstructor = atts.favInstructor;
+            
+        }
+
+        standUp(channel) {
+            console.log(`${this.name} announces to {channel}; @channel standup times!`);
+        }
+
+        debugsCode(student, subject) {
+            console.log(`${this.name} debugs {student.name}'s code on {subject}`);
+
+        }
+    } // end PM class
+
+
 
 #### Stretch Problem
 
