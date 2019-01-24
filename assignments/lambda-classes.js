@@ -66,6 +66,7 @@ class Person {
           this.specialty = atts.specialty;
           this.favLanguage = atts.favLanguage;
           this.catchPhrase = atts.catchPhrase;
+          
       }
 
       demo(subject) {
@@ -75,6 +76,10 @@ class Person {
       grade(student, subject) {
           console.log(`${student.name} receives a perfect score on ${subject}.`);
       }
+
+      gradestudent(student) {
+        student.grade += Math.floor(Math.random() * 11) - 3;
+    }
   } // end Instructor class
 
 /*#### Student
@@ -97,6 +102,7 @@ class Person {
             this.previousBackground = atts.previousBackground;
             this.className = atts.className;
             this.favSubjects = atts.favSubjects;
+            this.grade = atts.grade;
         }
         
         listSubjects() {                                    // should be one by one
@@ -109,6 +115,17 @@ class Person {
 
         sprintChallenge(subject) {
             console.log(`${this.name} has begun sprint challenge on ${subject}.`);
+        }
+
+        graduate() {
+             console.log(`${this.name} has a grade of ${this.grade}.`); 
+
+            if (this.grade > 70)
+              return true;
+            
+            else  
+               return false;
+            
         }
   } // end Student class
 
